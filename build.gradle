@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar.archiveName = "wowapptest.jar"
+buildDir = 'out/gradle'
+libsDirName = '../../'
+
+repositories {
+    jcenter()
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src'] }
+    }
+    test {
+        java { srcDirs = ['test'] }
+    }
+}
+
+dependencies {
+    compile 'net.sf.opencsv:opencsv:2.3'
+    testCompile 'junit:junit:4.12'
+    compile "log4j:log4j:1.2.17"
+}
+
+jar {
+    doFirst {
+        from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {
+            exclude "*"
+            exclude "about_files/*"
+            exclude "META-INF/*.SF"
+            exclude "META-INF/*.DSA"
+            exclude "META-INF/*.RSA"
+        }
+    }
+    manifest.attributes("Main-Class": "wowapptest.Main")
+}
