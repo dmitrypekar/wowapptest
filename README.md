@@ -44,4 +44,4 @@ Those files are read at startup.
 - No 10 cmd requirement implemented. This is JVM program. I see no reason for that limit.
 - No unit tests implemented. The time for the assignment was limited. If it's required to see my unit tests, please
   see my github account - https://github.com/dmitrypekar?tab=activity kafka-mesos project contains a lot of unit-tests.
-- Added idea file for convenience
+- Added Idea files for convenience
